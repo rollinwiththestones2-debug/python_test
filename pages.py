@@ -9,10 +9,6 @@ class UrbanRoutesPage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
 
-    # =====================
-    # Locators
-    # =====================
-
     FROM_FIELD = (By.ID, "from")
     TO_FIELD = (By.ID, "to")
 
@@ -51,10 +47,6 @@ class UrbanRoutesPage:
     ICE_CREAM_COUNTER = (By.CLASS_NAME, "counter-plus")
 
     ORDER_BUTTON = (By.XPATH, "//button[contains(text(),'Order')]")
-
-    # =====================
-    # Methods
-    # =====================
 
     def set_from(self, from_address):
         field = self.wait.until(EC.element_to_be_clickable(self.FROM_FIELD))
@@ -114,7 +106,7 @@ class UrbanRoutesPage:
             EC.visibility_of_element_located(self.CARD_CODE_FIELD)
         )
         element.send_keys(card_code)
-        element.send_keys(Keys.TAB)  # ✅ critical fix
+        element.send_keys(Keys.TAB)  
 
     def click_link_button(self):
         self.wait.until(EC.element_to_be_clickable(self.LINK_BUTTON)).click()
